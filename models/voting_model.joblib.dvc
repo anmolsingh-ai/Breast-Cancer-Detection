@@ -1,0 +1,5 @@
+outs:
+- md5: a4be98941840d82600549df0f3e38472
+  size: 14946171
+  hash: md5
+  path: voting_model.joblib
