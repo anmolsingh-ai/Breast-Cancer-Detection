@@ -1,0 +1,24 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python -m features.features
+    deps:
+    - path: data/raw/Breast_Cancer.csv
+      hash: md5
+      md5: eb5b0c883b6e63ec6cdec985dd3a8a37
+      size: 396119
+    - path: features/features.py
+      hash: md5
+      md5: e81f0a20b9540ff22e7abe1c96bd86c2
+      size: 2065
+  train:
+    cmd: python -m models.voting_ensemble
+    deps:
+    - path: data/processed/processed_breast_cancer.csv
+      hash: md5
+      md5: 995d7e36bdc623f360a243118c314b68
+      size: 946865
+    - path: models/voting_ensemble.py
+      hash: md5
+      md5: bb09419b5b43aff507a9b17528c91c25
+      size: 2151

@@ -1,0 +1,15 @@
+stages:
+  preprocess:
+    cmd: python -m features.features
+    deps:
+      - data/raw/Breast_Cancer.csv
+      - features/features.py
+    # outputs are stored under `data/` which is tracked by data.dvc
+    # avoid declaring an `outs` here to prevent overlap with the tracked `data` directory
+  train:
+    cmd: python -m models.voting_ensemble
+    deps:
+      - data/processed/processed_breast_cancer.csv
+      - models/voting_ensemble.py
+    # model is tracked via its .dvc file (models/voting_model.joblib.dvc)
+    # avoid declaring it here to prevent duplicate tracking
