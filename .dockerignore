@@ -1,0 +1,70 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Virtual environments
+venv/
+env/
+.venv/
+ENV/
+venv/
+
+# Environment files
+.env
+.env.*
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Testing / coverage
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+.pytest_cache/
+
+# PyInstaller
+*.manifest
+*.spec
+
+# DVC and large data
+.dvc
+.dvcignore
+.dvc/
+data/raw/
+.dvc/tmp/
+
+# Git
+.git
+.gitignore
+
+# IDE / editor
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Jupyter
+.ipynb_checkpoints
+
+# System
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Keep models folder in the image (do not ignore models/)
+!models/
