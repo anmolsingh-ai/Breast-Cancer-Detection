@@ -87,17 +87,14 @@ jobs:
       # -----------------------
       - name: Build and Push Docker Images
         run: |
-          IMAGE_VERSION=1.0.0  # simple version
-
-          # Docker Hub
+          # Build image
           docker build -t ${{ secrets.DOCKER_USERNAME }}/stream-app:latest .
-          docker tag ${{ secrets.DOCKER_USERNAME }}/stream-app:latest ${{ secrets.DOCKER_USERNAME }}/stream-app:${IMAGE_VERSION}
+      
+          # Push to Docker Hub
           docker push ${{ secrets.DOCKER_USERNAME }}/stream-app:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/stream-app:${IMAGE_VERSION}
-
-          # AWS ECR
+      
+          # Push to AWS ECR
           ECR_URI=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/cancer-app
           docker tag ${{ secrets.DOCKER_USERNAME }}/stream-app:latest $ECR_URI:latest
-          docker tag ${{ secrets.DOCKER_USERNAME }}/stream-app:${IMAGE_VERSION} $ECR_URI:${IMAGE_VERSION}
           docker push $ECR_URI:latest
-          docker push $ECR_URI:${IMAGE_VERSION}
+
